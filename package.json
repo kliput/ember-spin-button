@@ -1,6 +1,6 @@
 {
   "name": "ember-spin-button",
-  "version": "0.3.0",
+  "version": "0.3.2-onedata",
   "description": "A button with a spinner when pressed",
   "directories": {
     "doc": "doc",
