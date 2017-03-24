@@ -14,12 +14,14 @@ export default Ember.Component.extend({
   startDelay: 100,
 
   attributeBindings: [
-    'disabled',
+    '_disabled:disabled',
     'type',
     'color:data-color',
     'buttonStyle:data-style',
   ],
   classNameBindings: ['inFlight:in-flight:ready', ':spin-button'],
+
+  disabled: false,
 
   _timer: null,
 
@@ -69,8 +71,11 @@ export default Ember.Component.extend({
       this._timer = Ember.run.later(this, this.setEnabled, timeout);
     }
   },
-
-  disabled: Ember.computed.readOnly('inFlight'),
+  
+  _disabled: Ember.computed('disabled', 'inFlight', function () {
+    const { disabled, inFlight } = this.getProperties('disabled', 'inFlight');
+    return disabled || inFlight;
+  }),
 
   setEnabled() {
     if (this._timer) { Ember.run.cancel(this._timer); }
