@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import createSpinner from 'ember-spin-button/utils/spinner';
 
-const { observer } = Ember;
+const { observer, computed: { alias } } = Ember;
 
 export default Ember.Component.extend({
   tagName: 'button',
@@ -22,6 +22,8 @@ export default Ember.Component.extend({
   classNameBindings: ['inFlight:in-flight:ready', ':spin-button'],
 
   _timer: null,
+
+  defaultTimeout: alias('defaultTimout'),
 
   click: function (event) {
     event.preventDefault();
