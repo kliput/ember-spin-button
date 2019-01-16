@@ -6,7 +6,11 @@
 
 # dependencies
 /node_modules
+/.node_modules.ember-try
 /bower_components
+bower.json.ember-try
+package.json.ember-try
+package-lock.json
 
 # misc
 /.sass-cache
